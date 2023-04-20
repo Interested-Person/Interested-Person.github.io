@@ -4,6 +4,7 @@ canvas.width=700;
 canvas.height=700;
 const c=canvas.getContext('2d');
 const body=document.getElementById('body');
+var button=document.getElementById('button');
 
 //game variables
 var gameEnd=false;
@@ -88,7 +89,7 @@ var player={
 }
 
 var arrObstacle=[];
-var n=250;
+var n=370;
 var createObstacle={
     x:function(){
         return Math.floor((Math.random()*(690-25))+50)
@@ -127,11 +128,7 @@ function Safepath(){
 }
 
 //EVENTS
-canvas.addEventListener("mousemove",function(event){
-    mouse.x=event.x;
-    mouse.y=event.y;
-    console.log(mouse);
-})
+
 
 // main game loop
 function gameLoop() {
@@ -139,6 +136,7 @@ function gameLoop() {
 
 
     if(gameEnd){
+        button.style.visibility="hidden";
         return;
     }
 
@@ -155,6 +153,7 @@ function gameLoop() {
             body.style.backgroundColor="#FF7F7F";
             canvas.style.borderColor="#FF7F7F";
             canvas.style.backgroundColor="#FF7F7F";
+            button.style.visibility="hidden";
             return;
         }
     }
@@ -163,7 +162,13 @@ function gameLoop() {
     
 }
 gameLoop();
-
+function startGame(){
+    canvas.addEventListener("mousemove",function(event){
+        mouse.x=event.x;
+        mouse.y=event.y;
+        console.log(mouse);
+    })
+}
 
 
 //FUNCTIONS
