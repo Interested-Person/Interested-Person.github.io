@@ -37,7 +37,37 @@ var player={
         
     },
     accelerate:function(){
-        if(this.x>mouse.x){
+        var dx=this.x-mouse.x;
+        //console.log("dx="+dx)
+        var absDX=Math.abs(dx);
+        var dy=this.y-mouse.y;
+        //console.log("dy="+dy)
+        var absDY=Math.abs(dy);
+        var total=absDX+absDY;
+        //console.log("total="+total)
+        var speedX=2.0*(absDX/total);
+        //console.log("speedX="+speedX)
+        var speedY=2.0*(absDY/total);
+        //console.log("speedY="+speedY)
+        if(dx>=0){
+            this.vx=-1*speed(speedX);
+            console.log(speed(speedX));
+        }
+        else{
+            this.vx=speed(speedX);
+            console.log(-1*speed(speedX));
+        }
+
+        if(dy>0){
+            this.vy=-1*speed(speedY);
+            console.log(speed(speedY));
+        }
+        else{
+            this.vy=speed(speedY);
+            console.log(-1*speed(speedY));
+        }
+
+        /*if(this.x>mouse.x){
             this.vx=-1;
         }
         else{
@@ -49,7 +79,7 @@ var player={
         }
         else{
             this.vy=1;
-        }
+        }*/
     },
     bounce:function(){
         //WALLS
@@ -89,13 +119,13 @@ var player={
 }
 
 var arrObstacle=[];
-var n=370;
+var n=300;
 var createObstacle={
     x:function(){
-        return Math.floor((Math.random()*(690-25))+50)
+        return Math.floor((Math.random()*(690-50))+100)
     },
     y:function(){
-        return Math.floor((Math.random()*(690)))
+        return Math.floor((Math.random()*(690)))-7
     },
     width:function(){
         return Math.floor(Math.random() * 4) + 4; 
@@ -174,6 +204,25 @@ function startGame(){
 //FUNCTIONS
 function clearCanvas(){
     c.clearRect(0,0,canvas.width,canvas.height);
+
+}
+function speed(x){
+    function testProbability(probability) {
+        if (Math.random() < probability) {
+          return 1;
+        } else {
+          return 0;
+        }
+    }
+    var speedInt=Math.floor(x);
+    var speedDouble=x-speedInt;
+    var ans= speedInt+testProbability(speedDouble);
+    if(isNaN(ans)){
+        return 0;
+    }
+    else{
+        return ans;
+    }
 }
 //change made
 
