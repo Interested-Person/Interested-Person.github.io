@@ -9,7 +9,7 @@ var sfx={
     bgmusic: new Audio("northern-ideas-144137.mp3"),
 };
 sfx.bullet.volume=0.1;
-
+sfx.thunder.volume=0.9;
 sfx.bgmusic.volume=0.4;
 sfx.enemyDeath.volume=0.1;
 
@@ -513,5 +513,5 @@ function randomBetween(min, max) {
   }
   
 
-  
+
 
