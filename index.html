@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MAZE</title>
-    <link rel="stylesheet" href="maze.css">
+    <title>Survive for 60s</title>
+    <link rel="stylesheet" href="shooter.css">
 </head>
-<body id="body">
+<body onclick="sfx.bgmusic.play()">
     <canvas id="canvas"></canvas>
+    <button onclick="startGame()"><img width="100" height="60" src="https://th.bing.com/th/id/OIP.sNpmnGpGhzVBMwuZEMyBhAHaEW?pid=ImgDet&rs=1"></img></button>
+    <pre id="time" style="float:right; font-size: large; ">60s  </pre>
     <br>
-    <button onclick="startGame()" id="button">Start!</button>
-    <script src="maze.js"></script>
+    <br>
+    <script src="shooter.js"></script>
 </body>
 </html>
-<!--change made 2-->
